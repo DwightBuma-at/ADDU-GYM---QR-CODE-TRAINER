@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Trainers and officials — Ateneo de Davao University Fitness and Wellness Center." />
+  <title>Trainers &amp; Officials · Fitness & Wellness Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ateneo: { DEFAULT: '#003A6C', deep: '#002845', ink: '#001a2e' } },
+          fontFamily: {
+            sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+            display: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="relative min-h-screen overflow-x-hidden bg-[#003A6C] font-sans text-white antialiased">
+  <div class="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_100%_80%_at_50%_-20%,rgba(255,255,255,0.12),transparent_50%)]" aria-hidden="true"></div>
+  <header class="sticky top-0 z-50 border-b border-white/25 bg-[#003A6C] shadow-[0_4px_24px_rgba(0,0,0,0.15)]">
+    <div class="relative mx-auto max-w-7xl px-5 py-3 lg:px-8">
+      <div class="flex justify-end md:hidden">
+        <button type="button" id="nav-burger" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white transition hover:bg-white/10 md:hidden" aria-expanded="false" aria-controls="mobile-nav-overlay" aria-label="Open menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+      <div class="hidden md:block">
+        <div class="mx-auto grid max-w-3xl grid-cols-3 items-center gap-6 py-1 lg:max-w-4xl lg:gap-8">
+          <nav class="flex flex-wrap items-center justify-start gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="about.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">About</a>
+            <a href="coaches.html" class="font-display border-b-2 border-white pb-1 text-xs font-bold uppercase tracking-[0.2em] text-white" aria-current="page">Coaches</a>
+          </nav>
+          <div class="flex justify-center"><a href="./index.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.24em] text-white transition-colors hover:border-white/60 hover:text-white">Home</a></div>
+          <nav class="flex flex-wrap items-center justify-end gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="rates.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Rates</a>
+            <a href="equipment.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Equipment</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="mobile-nav-overlay" class="fixed inset-0 z-[100] hidden md:hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-menu tabindex="-1"></div>
+    <div class="absolute right-0 top-0 flex h-full w-[min(100%,360px)] flex-col border-l border-white/10 bg-[#002845]/98 shadow-2xl backdrop-blur-lg">
+      <div class="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
+        <div class="flex items-center gap-3">
+          <img src="assets/213.png" alt="" class="h-10 w-10 shrink-0 object-contain opacity-95" width="80" height="80" decoding="async" />
+          <span class="font-display text-[10px] font-semibold uppercase tracking-[0.35em] text-white/90">Menu</span>
+        </div>
+        <button type="button" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-white/15 text-white hover:bg-white/10" data-close-menu aria-label="Close menu"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <nav class="flex flex-1 flex-col gap-1 p-5" aria-label="Mobile primary">
+        <a href="./index.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Home</a>
+        <a href="about.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">About</a>
+        <a href="coaches.html" class="font-display border-l-2 border-white bg-white/10 px-4 py-3.5 text-sm font-bold uppercase tracking-[0.22em] text-white" aria-current="page">Coaches</a>
+        <a href="rates.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Rates</a>
+        <a href="equipment.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Equipment</a>
+      </nav>
+    </div>
+  </div>
+  <main id="main" class="relative z-10 mx-auto max-w-7xl px-5 pb-16 pt-[5.5rem] sm:px-8 sm:pb-20 sm:pt-24 md:px-10 lg:px-12" aria-labelledby="hero-heading">
+    <header class="relative mx-auto max-w-3xl text-center">
+      <div class="pointer-events-none absolute left-1/2 top-0 h-px w-[min(100%,18rem)] -translate-x-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent" aria-hidden="true"></div>
+      <p class="font-display text-[10px] font-semibold uppercase tracking-[0.45em] text-white/50">Team</p>
+      <h1 id="hero-heading" class="font-display mx-auto mt-4 max-w-[100vw] px-1 text-center text-[clamp(0.58rem,2.2vw+0.35rem,1.35rem)] font-extrabold leading-tight tracking-[0.06em] text-white sm:whitespace-nowrap sm:tracking-[0.09em] md:text-[clamp(0.82rem,1.5vw+0.45rem,1.65rem)]">
+        <span class="uppercase">Trainers</span> <span class="font-semibold normal-case text-white/75">and</span> <span class="uppercase">Officials</span>
+      </h1>
+    </header>
+
+    <div class="relative mx-auto mt-14 grid max-w-6xl gap-7 sm:mt-16 md:grid-cols-3 md:gap-8">
+      <article class="group relative flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_12px_40px_-16px_rgba(0,58,108,0.16)] ring-1 ring-slate-900/[0.04]">
+        <div class="relative flex items-center gap-3 border-b border-slate-200 bg-[#f1f5f9] pl-4 pr-4 py-3 sm:pl-5">
+          <img src="assets/213.png" alt="" width="64" height="64" class="h-9 w-9 shrink-0 object-contain" decoding="async" />
+          <div class="min-w-0 leading-tight">
+            <p class="font-display text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-[#003A6C]">Ateneo de Davao University</p>
+            <p class="font-display mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">Fitness &amp; Wellness Center</p>
+          </div>
+        </div>
+        <div class="relative pl-5 pr-5 pb-2 pt-5 sm:pl-6 sm:pr-6">
+          <div class="flex gap-4">
+            <div class="relative h-[5.25rem] w-[5.25rem] shrink-0 overflow-hidden rounded-md border-2 border-[#003A6C]/25 bg-slate-100 shadow-inner ring-1 ring-slate-200/80" role="img" aria-label="Photo placeholder for Juan Miguel Reyes">
+              <svg viewBox="0 0 80 80" class="absolute inset-0 h-full w-full p-[1.1rem] text-[#003A6C]/35" aria-hidden="true">
+                <circle cx="40" cy="28" r="12" fill="currentColor" />
+                <path d="M14 78c3.5-19 17-30 26-30s22.5 11 26 30" fill="currentColor" opacity="0.9" />
+              </svg>
+              <span class="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-[#003A6C] px-2 py-0.5 font-display text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">JM</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="inline-flex rounded border border-[#003A6C]/25 bg-[#003A6C]/[0.06] px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-[#003A6C] transition-colors duration-300 group-hover:bg-[#003A6C]/10">
+                Coach 1
+              </p>
+              <h2 class="font-display mt-3 text-lg font-bold leading-snug text-[#003A6C] sm:text-xl">
+                Juan Miguel Reyes <span class="font-semibold text-slate-500">&quot;JM&quot;</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="relative mt-2 border-t border-slate-200 px-5 py-5 sm:px-6">
+          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#003A6C]">Skills</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Strength training</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Conditioning</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Beginner barbell basics</li>
+          </ul>
+        </div>
+        <div class="relative border-t border-slate-200 px-5 py-5 sm:px-6">
+          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#003A6C]">Offers</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Form checks on compound lifts</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Starter strength templates</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="group relative flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_12px_40px_-16px_rgba(0,58,108,0.16)] ring-1 ring-slate-900/[0.04]">
+        <div class="relative flex items-center gap-3 border-b border-slate-200 bg-[#f1f5f9] pl-4 pr-4 py-3 sm:pl-5">
+          <img src="assets/213.png" alt="" width="64" height="64" class="h-9 w-9 shrink-0 object-contain" decoding="async" />
+          <div class="min-w-0 leading-tight">
+            <p class="font-display text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-[#003A6C]">Ateneo de Davao University</p>
+            <p class="font-display mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">Fitness &amp; Wellness Center</p>
+          </div>
+        </div>
+        <div class="relative pl-5 pr-5 pb-2 pt-5 sm:pl-6 sm:pr-6">
+          <div class="flex gap-4">
+            <div class="relative h-[5.25rem] w-[5.25rem] shrink-0 overflow-hidden rounded-md border-2 border-[#003A6C]/25 bg-slate-100 shadow-inner ring-1 ring-slate-200/80" role="img" aria-label="Photo placeholder for Sofia Elena Cruz">
+              <svg viewBox="0 0 80 80" class="absolute inset-0 h-full w-full p-[1.1rem] text-[#003A6C]/35" aria-hidden="true">
+                <circle cx="40" cy="28" r="12" fill="currentColor" />
+                <path d="M14 78c3.5-19 17-30 26-30s22.5 11 26 30" fill="currentColor" opacity="0.9" />
+              </svg>
+              <span class="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-[#003A6C] px-2 py-0.5 font-display text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">SC</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="inline-flex rounded border border-[#003A6C]/25 bg-[#003A6C]/[0.06] px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-[#003A6C] transition-colors duration-300 group-hover:bg-[#003A6C]/10">
+                Coach 2
+              </p>
+              <h2 class="font-display mt-3 text-lg font-bold leading-snug text-[#003A6C] sm:text-xl">
+                Sofia Elena Cruz <span class="font-semibold text-slate-500">&quot;Sofi&quot;</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="relative mt-2 border-t border-slate-200 px-5 py-5 sm:px-6">
+          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#003A6C]">Skills</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Mobility and recovery</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- HIIT and circuit training</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Core stability</li>
+          </ul>
+        </div>
+        <div class="relative border-t border-slate-200 px-5 py-5 sm:px-6">
+          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#003A6C]">Offers</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Small group conditioning blocks</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Warm-up and cooldown routines</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="group relative flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_12px_40px_-16px_rgba(0,58,108,0.16)] ring-1 ring-slate-900/[0.04]">
+        <div class="relative flex items-center gap-3 border-b border-slate-200 bg-[#f1f5f9] pl-4 pr-4 py-3 sm:pl-5">
+          <img src="assets/213.png" alt="" width="64" height="64" class="h-9 w-9 shrink-0 object-contain" decoding="async" />
+          <div class="min-w-0 leading-tight">
+            <p class="font-display text-[10px] font-bold uppercase leading-tight tracking-[0.12em] text-[#003A6C]">Ateneo de Davao University</p>
+            <p class="font-display mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-slate-500">Fitness &amp; Wellness Center</p>
+          </div>
+        </div>
+        <div class="relative pl-5 pr-5 pb-2 pt-5 sm:pl-6 sm:pr-6">
+          <div class="flex gap-4">
+            <div class="relative h-[5.25rem] w-[5.25rem] shrink-0 overflow-hidden rounded-md border-2 border-[#003A6C]/25 bg-slate-100 shadow-inner ring-1 ring-slate-200/80" role="img" aria-label="Photo placeholder for Marcus Paolo Villarin">
+              <svg viewBox="0 0 80 80" class="absolute inset-0 h-full w-full p-[1.1rem] text-[#003A6C]/35" aria-hidden="true">
+                <circle cx="40" cy="28" r="12" fill="currentColor" />
+                <path d="M14 78c3.5-19 17-30 26-30s22.5 11 26 30" fill="currentColor" opacity="0.9" />
+              </svg>
+              <span class="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-[#003A6C] px-2 py-0.5 font-display text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">MV</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="inline-flex rounded border border-[#003A6C]/25 bg-[#003A6C]/[0.06] px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-[0.22em] text-[#003A6C] transition-colors duration-300 group-hover:bg-[#003A6C]/10">
+                Coach 3
+              </p>
+              <h2 class="font-display mt-3 text-lg font-bold leading-snug text-[#003A6C] sm:text-xl">
+                Marcus Paolo Villarin <span class="font-semibold text-slate-500">&quot;MPV&quot;</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="relative mt-2 border-t border-slate-200 px-5 py-5 sm:px-6">
+          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#003A6C]">Skills</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Athletic performance</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Olympic lifting technique</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Speed and agility drills</li>
+          </ul>
+        </div>
+        <div class="relative border-t border-slate-200 px-5 py-5 sm:px-6">
+          <h3 class="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#003A6C]">Offers</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Varsity prep sessions</li>
+            <li class="motion-safe:transition-all motion-safe:duration-200 motion-safe:hover:translate-x-0.5 motion-safe:hover:text-[#003A6C]">- Technical lifting clinics</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var burger = document.getElementById('nav-burger');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!burger || !overlay) return;
+      var closers = overlay.querySelectorAll('[data-close-menu]');
+
+      function openMenu() {
+        overlay.classList.remove('hidden');
+        overlay.setAttribute('aria-hidden', 'false');
+        burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        overlay.classList.add('hidden');
+        overlay.setAttribute('aria-hidden', 'true');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+      }
+      function toggle() {
+        if (overlay.classList.contains('hidden')) openMenu();
+        else closeMenu();
+      }
+
+      burger.addEventListener('click', toggle);
+      closers.forEach(function (el) {
+        el.addEventListener('click', closeMenu);
+      });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeMenu();
+      });
+    })();
+  </script>
+</body>
+</html>

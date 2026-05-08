@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Fitness and Wellness Center membership rates — confirm fees at the facility." />
+  <title>Rates · Fitness & Wellness Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ateneo: { DEFAULT: '#003A6C', deep: '#002845', ink: '#001a2e' } },
+          fontFamily: {
+            sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+            display: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-[#003A6C] font-sans text-white antialiased">
+  <header class="sticky top-0 z-50 border-b border-white/25 bg-[#003A6C] shadow-[0_4px_24px_rgba(0,0,0,0.15)]">
+    <div class="relative mx-auto max-w-7xl px-5 py-3 lg:px-8">
+      <div class="flex justify-end md:hidden">
+        <button type="button" id="nav-burger" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white transition hover:bg-white/10 md:hidden" aria-expanded="false" aria-controls="mobile-nav-overlay" aria-label="Open menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+      <div class="hidden md:block">
+        <div class="mx-auto grid max-w-3xl grid-cols-3 items-center gap-6 py-1 lg:max-w-4xl lg:gap-8">
+          <nav class="flex flex-wrap items-center justify-start gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="about.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">About</a>
+            <a href="coaches.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Coaches</a>
+          </nav>
+          <div class="flex justify-center"><a href="./index.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.24em] text-white transition-colors hover:border-white/60 hover:text-white">Home</a></div>
+          <nav class="flex flex-wrap items-center justify-end gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="rates.html" class="font-display border-b-2 border-white pb-1 text-xs font-bold uppercase tracking-[0.2em] text-white" aria-current="page">Rates</a>
+            <a href="equipment.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Equipment</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-nav-overlay" class="fixed inset-0 z-[100] hidden md:hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-menu tabindex="-1"></div>
+    <div class="absolute right-0 top-0 flex h-full w-[min(100%,360px)] flex-col border-l border-white/10 bg-[#002845] shadow-2xl">
+      <div class="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
+        <div class="flex items-center gap-3">
+          <img src="assets/213.png" alt="" class="h-10 w-10 shrink-0 object-contain opacity-95" width="80" height="80" decoding="async" />
+          <span class="font-display text-[10px] font-semibold uppercase tracking-[0.35em] text-white/90">Menu</span>
+        </div>
+        <button type="button" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-white/15 text-white hover:bg-white/10" data-close-menu aria-label="Close menu"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <nav class="flex flex-1 flex-col gap-1 p-5" aria-label="Mobile primary">
+        <a href="./index.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Home</a>
+        <a href="about.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">About</a>
+        <a href="coaches.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Coaches</a>
+        <a href="rates.html" class="font-display border-l-2 border-white bg-white/10 px-4 py-3.5 text-sm font-bold uppercase tracking-[0.22em] text-white" aria-current="page">Rates</a>
+        <a href="equipment.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Equipment</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main" class="flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center px-4 py-8 md:min-h-[calc(100dvh-4rem)] md:px-8 md:py-6" aria-labelledby="rates-heading">
+    <div class="mx-auto w-full max-w-5xl overflow-hidden rounded border border-white bg-white shadow-md md:flex md:min-h-[300px] md:max-h-[min(620px,calc(100dvh-6rem))]">
+      <section class="flex flex-col justify-center bg-[#003A6C] px-8 py-9 text-white md:w-[42%] md:border-r md:border-white md:py-8 lg:w-[40%]" aria-labelledby="rates-heading">
+        <h1 id="rates-heading" class="font-display border-b border-white/25 pb-3 text-lg font-bold uppercase tracking-[0.2em] text-white">
+          Rates
+        </h1>
+        <div class="mt-6 space-y-6">
+          <div>
+            <p class="font-display text-4xl font-extrabold tabular-nums lg:text-[2.75rem]">
+              <span class="mr-0.5 text-[1.65rem] font-bold lg:text-[2rem]">₱</span>1,250
+            </p>
+            <p class="mt-2 max-w-[15rem] text-sm leading-snug text-white/95">
+              1 month access - gym with pool.
+            </p>
+          </div>
+          <div class="border-t border-white/20 pt-6">
+            <p class="font-display text-4xl font-extrabold tabular-nums lg:text-[2.75rem]">
+              <span class="mr-0.5 text-[1.65rem] font-bold lg:text-[2rem]">₱</span>3,500
+            </p>
+            <p class="mt-2 max-w-[15rem] text-sm leading-snug text-white/95">
+              3 months access - gym with pool.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="flex flex-1 flex-col justify-center overflow-y-auto border-t border-slate-200 bg-white px-8 py-8 text-slate-700 md:border-t-0 md:py-7" aria-labelledby="rates-notes">
+        <h2 id="rates-notes" class="font-display border-b border-slate-200 pb-3 text-lg font-bold uppercase tracking-[0.2em] text-[#003A6C]">
+          Terms
+        </h2>
+        <ul class="mt-4 grid gap-x-10 gap-y-2 text-sm leading-snug text-slate-600 md:grid-cols-2 md:gap-y-2.5">
+          <li class="flex gap-2 md:col-span-2"><span class="select-none text-[#003A6C]">•</span> Fees posted at the Fitness and Wellness Center override what appears here.</li>
+          <li class="flex gap-2"><span class="select-none text-[#003A6C]">•</span> Bring valid ID; desk staff handle bundles and who qualifies.</li>
+          <li class="flex gap-2"><span class="select-none text-[#003A6C]">•</span> Pool rules and schedules follow on-site policy.</li>
+          <li class="flex gap-2 md:col-span-2"><span class="select-none text-[#003A6C]">•</span> Confirm payment options and renewal when you visit.</li>
+        </ul>
+
+        <div class="mt-6 border-t border-slate-200 pt-5">
+          <h3 class="font-display border-b border-slate-200 pb-2 text-xs font-bold uppercase tracking-[0.18em] text-[#003A6C]">
+            How to pay
+          </h3>
+          <ol class="mt-4 list-decimal space-y-2.5 pl-5 text-sm leading-relaxed text-slate-600 marker:text-[#003A6C] marker:font-semibold">
+            <li>Go to the cashier to pay your membership fee.</li>
+            <li>After the cashier verifies your payment, bring us the receipt so we can register you.</li>
+          </ol>
+        </div>
+
+        <p class="mt-5 border-t border-slate-200 pt-4 text-xs leading-relaxed text-slate-500">
+          Double-check any amount at the desk before paying.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var burger = document.getElementById('nav-burger');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!burger || !overlay) return;
+      var closers = overlay.querySelectorAll('[data-close-menu]');
+
+      function openMenu() {
+        overlay.classList.remove('hidden');
+        overlay.setAttribute('aria-hidden', 'false');
+        burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        overlay.classList.add('hidden');
+        overlay.setAttribute('aria-hidden', 'true');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+      }
+      function toggle() {
+        if (overlay.classList.contains('hidden')) openMenu();
+        else closeMenu();
+      }
+
+      burger.addEventListener('click', toggle);
+      closers.forEach(function (el) {
+        el.addEventListener('click', closeMenu);
+      });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeMenu();
+      });
+    })();
+  </script>
+</body>
+</html>

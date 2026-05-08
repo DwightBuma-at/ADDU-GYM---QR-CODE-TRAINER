@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About the Fitness and Wellness Center web companion and how it serves the Ateneo de Davao community." />
+  <title>About · Fitness & Wellness Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ateneo: { DEFAULT: '#003A6C', deep: '#002845', ink: '#001a2e' } },
+          fontFamily: {
+            sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+            display: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-white font-sans text-slate-800 antialiased">
+  <header class="fixed left-0 right-0 top-0 z-50 border-b border-white/25 bg-[#003A6C] shadow-[0_4px_24px_rgba(0,0,0,0.15)]">
+    <div class="relative mx-auto max-w-7xl px-5 py-3 lg:px-8">
+      <div class="flex justify-end md:hidden">
+        <button type="button" id="nav-burger" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white transition hover:bg-white/10" aria-expanded="false" aria-controls="mobile-nav-overlay" aria-label="Open menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+      <div class="hidden md:block">
+        <div class="mx-auto grid max-w-3xl grid-cols-3 items-center gap-6 py-1 lg:max-w-4xl lg:gap-8">
+          <nav class="flex flex-wrap items-center justify-start gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="about.html" class="font-display border-b-2 border-white pb-1 text-xs font-bold uppercase tracking-[0.2em] text-white" aria-current="page">About</a>
+            <a href="coaches.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Coaches</a>
+          </nav>
+          <div class="flex justify-center">
+            <a href="./index.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.24em] text-white transition-colors hover:border-white/60 hover:text-white">Home</a>
+          </div>
+          <nav class="flex flex-wrap items-center justify-end gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="rates.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Rates</a>
+            <a href="equipment.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white transition-colors hover:border-white/60 hover:text-white">Equipment</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-nav-overlay" class="fixed inset-0 z-[100] hidden md:hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-menu tabindex="-1"></div>
+    <div class="absolute right-0 top-0 flex h-full w-[min(100%,360px)] flex-col border-l border-white/10 bg-[#002845]/98 shadow-2xl backdrop-blur-lg">
+      <div class="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
+        <div class="flex items-center gap-3">
+          <img src="assets/213.png" alt="" width="80" height="80" class="h-10 w-10 shrink-0 object-contain opacity-95" decoding="async" />
+          <span class="font-display text-[10px] font-semibold uppercase tracking-[0.35em] text-white/90">Menu</span>
+        </div>
+        <button type="button" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-white/15 text-white hover:bg-white/10" data-close-menu aria-label="Close menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav class="flex flex-1 flex-col gap-1 p-5" aria-label="Mobile primary">
+        <a href="./index.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Home</a>
+        <a href="about.html" class="font-display border-l-2 border-white bg-white/10 px-4 py-3.5 text-sm font-bold uppercase tracking-[0.22em] text-white" aria-current="page">About</a>
+        <a href="coaches.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Coaches</a>
+        <a href="rates.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Rates</a>
+        <a href="equipment.html" class="font-display border-l-2 border-transparent px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:border-white/40 hover:bg-white/10">Equipment</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main" class="bg-white">
+    <section class="flex min-h-[100dvh] flex-col pt-[3.25rem] md:flex-row md:pt-14" aria-labelledby="hero-heading">
+      <div class="flex min-h-[min(46vh,420px)] w-full shrink-0 items-center justify-center bg-slate-50 px-4 py-6 md:sticky md:top-14 md:h-[calc(100dvh-3.5rem)] md:w-[46%] md:min-h-0 lg:w-[45%] md:px-6 md:py-10">
+        <img
+          src="assets/about.jpg"
+          alt="Fitness and Wellness Center scene for the About page."
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          decoding="async"
+          class="h-auto max-h-[min(42vh,400px)] w-full max-w-full object-contain object-center md:max-h-full"
+        />
+      </div>
+      <div class="flex flex-1 flex-col justify-center px-6 py-12 md:min-h-0 md:px-12 md:py-16 lg:px-16 lg:py-20">
+        <article class="mx-auto w-full max-w-[42rem]">
+          <header class="mb-10 border-b border-slate-200 pb-8">
+            <p class="font-display text-xs font-semibold uppercase tracking-[0.18em] text-[#003A6C] md:text-[13px]">
+              Ateneo de Davao University
+            </p>
+            <p class="font-display mt-2 text-sm font-medium text-slate-600">
+              Fitness, Wellness &amp; Training Center
+            </p>
+            <h1 id="hero-heading" class="font-display mt-8 text-3xl font-bold uppercase tracking-wide text-[#003A6C] sm:text-4xl md:text-5xl">
+              About
+            </h1>
+            <p class="font-display mt-2 text-lg font-medium text-slate-600 md:text-xl">This site</p>
+          </header>
+          <div class="space-y-6 text-base leading-7 text-slate-700 md:text-[1.0625rem] md:leading-8">
+            <p>
+              This website is a small companion to our Fitness and Wellness Center. We made it so students, staff, and guests can feel welcome the moment they walk in, and leave with a clearer sense of how to train well on their own time.
+            </p>
+            <p>
+              Magis is not only doing more, but doing what matters with care. Here that means honoring the body as part of the whole person: mind, spirit, and community. The QR guides beside our equipment are meant to help you move safely, learn at your pace, and grow steady habits that carry beyond the gym floor.
+            </p>
+            <p>
+              Whether you are trying equipment for the first time or returning after a busy term, we hope this space helps you stay curious, train wisely, and keep wellness woven into everyday life on campus.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var burger = document.getElementById('nav-burger');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!burger || !overlay) return;
+      var closers = overlay.querySelectorAll('[data-close-menu]');
+
+      function openMenu() {
+        overlay.classList.remove('hidden');
+        overlay.setAttribute('aria-hidden', 'false');
+        burger.setAttribute('aria-expanded', 'true');
+        burger.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        overlay.classList.add('hidden');
+        overlay.setAttribute('aria-hidden', 'true');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+      }
+      function toggle() {
+        if (overlay.classList.contains('hidden')) openMenu();
+        else closeMenu();
+      }
+
+      burger.addEventListener('click', toggle);
+      closers.forEach(function (el) {
+        el.addEventListener('click', closeMenu);
+      });
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeMenu();
+      });
+    })();
+  </script>
+</body>
+</html>

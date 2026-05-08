@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Equipment — Ateneo de Davao University Fitness and Wellness Center." />
+  <title>Equipment · Fitness & Wellness Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ateneo: { DEFAULT: '#003A6C', deep: '#002845', ink: '#001a2e' } },
+          fontFamily: {
+            sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+            display: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="relative min-h-screen overflow-x-hidden bg-[#003A6C] font-sans text-white antialiased">
+  <div class="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_100%_80%_at_50%_-20%,rgba(255,255,255,0.12),transparent_50%)]" aria-hidden="true"></div>
+  <header class="sticky top-0 z-50 border-b border-white/25 bg-[#003A6C] shadow-[0_4px_24px_rgba(0,0,0,0.15)]">
+    <div class="relative mx-auto max-w-7xl px-5 py-3 lg:px-8">
+      <div class="flex justify-end md:hidden">
+        <button type="button" id="nav-burger" class="flex h-11 w-11 items-center justify-center rounded-md border border-white/20 bg-white/5 text-white hover:bg-white/10 md:hidden" aria-expanded="false" aria-controls="mobile-nav-overlay" aria-label="Open menu">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+      <div class="hidden md:block">
+        <div class="mx-auto grid max-w-3xl grid-cols-3 items-center gap-6 py-1 lg:max-w-4xl lg:gap-8">
+          <nav class="flex flex-wrap items-center justify-start gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="about.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white hover:border-white/60">About</a>
+            <a href="coaches.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white hover:border-white/60">Coaches</a>
+          </nav>
+          <div class="flex justify-center"><a href="./index.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.24em] text-white hover:border-white/60">Home</a></div>
+          <nav class="flex flex-wrap items-center justify-end gap-x-8 gap-y-2" aria-label="Primary">
+            <a href="rates.html" class="font-display border-b-2 border-transparent pb-1 text-xs font-medium uppercase tracking-[0.2em] text-white hover:border-white/60">Rates</a>
+            <a href="equipment.html" class="font-display border-b-2 border-white pb-1 text-xs font-bold uppercase tracking-[0.2em] text-white" aria-current="page">Equipment</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="mobile-nav-overlay" class="fixed inset-0 z-[100] hidden md:hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-close-menu tabindex="-1"></div>
+    <div class="absolute right-0 top-0 flex h-full w-[min(100%,360px)] flex-col border-l border-white/10 bg-[#002845]/98 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 px-5 py-4">
+        <div class="flex items-center gap-3"><img src="assets/213.png" alt="" class="h-10 w-10 object-contain" width="80" height="80" decoding="async" /><span class="font-display text-[10px] uppercase tracking-[0.35em] text-white/90">Menu</span></div>
+        <button type="button" class="flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-white hover:bg-white/10" data-close-menu aria-label="Close"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <nav class="flex flex-col gap-1 p-5">
+        <a href="./index.html" class="px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white/90 hover:bg-white/10">Home</a>
+        <a href="about.html" class="px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white hover:bg-white/10">About</a>
+        <a href="coaches.html" class="px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white hover:bg-white/10">Coaches</a>
+        <a href="rates.html" class="px-4 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white hover:bg-white/10">Rates</a>
+        <a href="equipment.html" class="border-l-2 border-white bg-white/10 px-4 py-3.5 text-sm font-bold uppercase tracking-[0.18em] text-white">Equipment</a>
+      </nav>
+    </div>
+  </div>
+  <main id="main" class="relative z-10 mx-auto max-w-4xl px-5 pb-16 pt-[5.5rem] sm:px-8 sm:pb-20 sm:pt-24 md:px-10" aria-labelledby="equipment-heading">
+    <header class="mx-auto max-w-2xl text-center">
+      <h1 id="equipment-heading" class="font-display text-2xl font-extrabold uppercase tracking-[0.06em] text-white sm:text-3xl">List of equipment</h1>
+    </header>
+
+    <div class="mx-auto mt-8 max-w-md sm:mt-10">
+      <label for="equipment-search" class="sr-only">Search equipment</label>
+      <div class="relative">
+        <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-white/40" aria-hidden="true">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M20 20l-3.5-3.5"/></svg>
+        </span>
+        <input
+          id="equipment-search"
+          type="search"
+          inputmode="search"
+          autocomplete="off"
+          placeholder="Search equipment…"
+          class="w-full rounded-lg border border-white/25 bg-white/10 py-3 pl-11 pr-4 text-sm text-white placeholder:text-white/45 outline-none ring-[#003A6C] transition focus:border-white/40 focus:bg-white/[0.14] focus:ring-2"
+        />
+      </div>
+    </div>
+
+    <section class="relative mt-8 sm:mt-10" aria-label="Equipment results">
+      <p id="equipment-no-results" class="hidden text-center text-sm text-white/55">No equipment matches your search.</p>
+      <nav class="mt-2 mx-auto max-w-5xl" aria-label="Equipment list">
+        <ul
+          id="equipment-list"
+          class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <li id="equipment-pec-fly" class="equipment-list-item h-full" data-equipment-search="pec fly pecfly chest rear delt">
+            <a
+              href="equipments-lists/equipments-pec-fly.html"
+              class="group flex h-full min-h-[56px] items-center rounded-lg border border-white/20 bg-white/10 px-4 py-2 transition hover:bg-white/15"
+            >
+              <span class="block w-full whitespace-nowrap font-display text-[10px] sm:text-[11px] lg:text-xs xl:text-sm font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] text-white transition group-hover:text-white/90">
+                PEC FLY
+              </span>
+            </a>
+          </li>
+          <li id="equipment-leg-press-extension" class="equipment-list-item h-full" data-equipment-search="leg press extension leg extension quads quadriceps">
+            <a
+              href="equipments-lists/equipments-leg-extenstions.html"
+              class="group flex h-full min-h-[56px] items-center rounded-lg border border-white/20 bg-white/10 px-4 py-2 transition hover:bg-white/15"
+            >
+              <span class="block w-full whitespace-nowrap font-display text-[10px] sm:text-[11px] lg:text-xs xl:text-sm font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] text-white transition group-hover:text-white/90">
+                LEG PRESS EXTENSION
+              </span>
+            </a>
+          </li>
+          <li id="equipment-lat-pulldown-machine" class="equipment-list-item h-full" data-equipment-search="lat pulldown machine pulldown lat lats back biceps">
+            <a
+              href="equipments-lists/equipments-lat-pulldown-machine.html"
+              class="group flex h-full min-h-[56px] items-center rounded-lg border border-white/20 bg-white/10 px-4 py-2 transition hover:bg-white/15"
+            >
+              <span class="block w-full whitespace-nowrap font-display text-[10px] sm:text-[11px] lg:text-xs xl:text-sm font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] text-white transition group-hover:text-white/90">
+                LAT PULLDOWN MACHINE
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+  <script>
+    (function () {
+      var b = document.getElementById('nav-burger'), o = document.getElementById('mobile-nav-overlay');
+      if (!b || !o) return;
+      function closeMenu() { o.classList.add('hidden'); o.setAttribute('aria-hidden', 'true'); b.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+      function openMenu() { o.classList.remove('hidden'); o.setAttribute('aria-hidden', 'false'); b.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+      b.addEventListener('click', function () { o.classList.contains('hidden') ? openMenu() : closeMenu(); });
+      o.querySelectorAll('[data-close-menu], a').forEach(function (el) { el.addEventListener('click', closeMenu); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !o.classList.contains('hidden')) closeMenu(); });
+    })();
+    (function () {
+      var input = document.getElementById('equipment-search');
+      var items = document.querySelectorAll('.equipment-list-item');
+      var empty = document.getElementById('equipment-no-results');
+      var nav = document.querySelector('[aria-label="Equipment list"]');
+      if (!input || !items.length) return;
+      function filter() {
+        var q = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+        var visible = 0;
+        items.forEach(function (li) {
+          var hay = (li.getAttribute('data-equipment-search') || '').toLowerCase();
+          var match = !q || hay.indexOf(q) !== -1;
+          li.hidden = !match;
+          li.setAttribute('aria-hidden', match ? 'false' : 'true');
+          if (match) visible++;
+        });
+        if (empty) {
+          var showEmpty = q.length > 0 && visible === 0;
+          empty.classList.toggle('hidden', !showEmpty);
+        }
+        if (nav) nav.classList.toggle('hidden', visible === 0 && q.length > 0);
+      }
+      input.addEventListener('input', filter);
+      filter();
+    })();
+  </script>
+</body>
+</html>
