@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Generate and manage QR codes for gym equipment pages." />
+  <title>QR Generator · Fitness & Wellness Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ateneo: { DEFAULT: '#003A6C', deep: '#002845', ink: '#001a2e' } },
+          fontFamily: {
+            sans: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+            display: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="relative min-h-screen overflow-x-hidden bg-[#003A6C] font-sans text-white antialiased">
+  <div class="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_100%_80%_at_50%_-20%,rgba(255,255,255,0.12),transparent_50%)]" aria-hidden="true"></div>
+
+  <main class="relative z-10 mx-auto max-w-6xl px-5 pb-20 pt-10 sm:px-8 sm:pt-14 lg:px-10">
+    <header class="mx-auto max-w-3xl text-center">
+      <p class="font-display text-[10px] font-semibold uppercase tracking-[0.45em] text-white/55">Admin Tool</p>
+      <h1 class="font-display mt-4 text-2xl font-extrabold uppercase tracking-[0.08em] text-white sm:text-3xl">Equipment QR Generator</h1>
+      <p class="mt-4 text-sm text-white/75 sm:text-base">
+        Edit machine links, generate QR, download, and print stickers for each equipment page.
+      </p>
+    </header>
+
+    <section class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+      <article class="rounded-xl border border-white/20 bg-white/10 p-4 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:p-5">
+        <div class="flex flex-wrap items-center gap-3">
+          <h2 class="font-display text-sm font-bold uppercase tracking-[0.16em] text-white">Equipment List</h2>
+          <span class="rounded-full border border-white/25 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/80" id="count-badge">0 items</span>
+        </div>
+
+        <div class="mt-4 rounded-lg border border-white/20 bg-[#002845]/35 p-3 sm:p-4">
+          <p class="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white/85">Website base URL</p>
+          <p id="base-url-text" class="mt-2 w-full rounded-md border border-white/25 bg-white/10 px-3 py-2 text-sm text-white/95"></p>
+          <p class="mt-2 text-xs text-white/60">Auto-detected and locked. QR links always use this base URL.</p>
+        </div>
+
+        <div class="mt-4 rounded-lg border border-white/20 bg-[#002845]/35 p-3 sm:p-4">
+          <label for="machine-search" class="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-white/85">Search machine</label>
+          <input
+            id="machine-search"
+            type="search"
+            placeholder="Type machine name..."
+            class="mt-2 w-full rounded-md border border-white/25 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/50 outline-none focus:border-white/45"
+          />
+        </div>
+
+        <div class="mt-4 overflow-x-auto">
+          <table class="min-w-full border-separate border-spacing-y-2" aria-label="Equipment table">
+            <thead>
+              <tr class="text-left text-[11px] uppercase tracking-[0.14em] text-white/60">
+                <th class="px-2 py-1">Machine</th>
+                <th class="px-2 py-1">Page Path</th>
+                <th class="px-2 py-1 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="equipment-rows"></tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <p id="page-info" class="text-xs text-white/70">Page 1 of 1</p>
+          <div class="flex items-center gap-2">
+            <button id="prev-page" class="rounded-md border border-white/30 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-white hover:bg-white/20" disabled>Prev</button>
+            <button id="next-page" class="rounded-md border border-white/30 bg-white/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-white hover:bg-white/20" disabled>Next</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-xl border border-white/20 bg-white/10 p-4 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:p-5">
+        <h2 class="font-display text-sm font-bold uppercase tracking-[0.16em] text-white">QR Preview</h2>
+        <p id="selected-machine" class="mt-2 text-sm text-white/80">Select a machine and click “Generate”.</p>
+        <p id="selected-url" class="mt-1 break-all text-xs text-white/60"></p>
+
+        <div id="qr-canvas" class="hidden" aria-hidden="true"></div>
+
+        <div class="mt-4 flex flex-wrap gap-2">
+          <button id="download-qr" class="rounded-md bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#003A6C] hover:bg-white/90" disabled>Download QR (PNG)</button>
+        </div>
+        <p class="mt-2 text-xs text-white/65">PNG only. Recommended print: 3 x 3 inches (laminated sticker).</p>
+
+        <div id="sticker-preview-wrap" class="mt-4 rounded-lg border border-white/25 bg-white p-3">
+          <p class="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#003A6C]">Sticker Preview</p>
+          <img id="sticker-preview-img" src="" alt="Sticker preview" class="mx-auto w-full max-w-[360px] object-contain" />
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var rowsEl = document.getElementById('equipment-rows');
+      var countBadge = document.getElementById('count-badge');
+      var baseUrlText = document.getElementById('base-url-text');
+      var machineSearch = document.getElementById('machine-search');
+      var pageInfo = document.getElementById('page-info');
+      var prevPageBtn = document.getElementById('prev-page');
+      var nextPageBtn = document.getElementById('next-page');
+      var qrHolder = document.getElementById('qr-canvas');
+      var selectedMachine = document.getElementById('selected-machine');
+      var selectedUrl = document.getElementById('selected-url');
+      var downloadBtn = document.getElementById('download-qr');
+      var stickerPreviewWrap = document.getElementById('sticker-preview-wrap');
+      var stickerPreviewImg = document.getElementById('sticker-preview-img');
+
+      var qrInstance = null;
+      var qrData = null;
+      var machines = [];
+      var filteredMachines = [];
+      var currentPage = 1;
+      var pageSize = 6;
+
+      async function fetchEquipmentListMachines() {
+        try {
+          var response = await fetch('equipment.html?v=' + Date.now(), { cache: 'no-store' });
+          if (!response.ok) throw new Error('Failed to read equipment list page.');
+          var html = await response.text();
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(html, 'text/html');
+          var links = doc.querySelectorAll('#equipment-list .equipment-list-item a[href]');
+          var machines = [];
+
+          links.forEach(function (a) {
+            var name = (a.textContent || '').trim().replace(/\s+/g, ' ');
+            var path = (a.getAttribute('href') || '').trim();
+            if (!name || !path) return;
+            machines.push({
+              id: String(path).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+              name: name.toUpperCase(),
+              path: path
+            });
+          });
+
+          return machines;
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function readBaseUrl() {
+        return 'https://dwightbuma-at.github.io/ADDU-GYM---QR-CODE-TRAINER/';
+      }
+
+      function normalizeBaseUrl(url) {
+        if (!url) return '';
+        return url.endsWith('/') ? url : url + '/';
+      }
+
+      function absoluteUrl(path) {
+        var base = normalizeBaseUrl(baseUrlText.textContent.trim());
+        var cleanPath = String(path || '').replace(/^\/+/, '');
+        return base + cleanPath;
+      }
+
+      function getQrImageSrc() {
+        var canvas = qrHolder.querySelector('canvas');
+        if (canvas) return canvas.toDataURL('image/png');
+        var img = qrHolder.querySelector('img');
+        return img ? img.src : '';
+      }
+
+      function loadImage(src) {
+        return new Promise(function (resolve, reject) {
+          var img = new Image();
+          img.onload = function () { resolve(img); };
+          img.onerror = reject;
+          img.src = src;
+        });
+      }
+
+      async function buildStickerDataUrl() {
+        var qrSrc = getQrImageSrc();
+        if (!qrSrc) return '';
+
+        var canvas = document.createElement('canvas');
+        // Single HD format (print-sticker style).
+        canvas.width = 1200;
+        canvas.height = 1450;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return '';
+
+        // Base sticker (fixed square size for print/download consistency)
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Border
+        ctx.strokeStyle = '#003A6C';
+        ctx.lineWidth = 20;
+        ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+
+        // Top: logo + titles
+        var topY = 70;
+        var logoSize = 110;
+        var logoX = 110;
+        var titleX = logoX + logoSize + 24;
+        try {
+          var logo = await loadImage('assets/213.png');
+          ctx.drawImage(logo, logoX, topY, logoSize, logoSize);
+        } catch (e) {
+          // Logo is optional fallback.
+        }
+        ctx.fillStyle = '#003A6C';
+        ctx.textAlign = 'left';
+        ctx.font = '700 52px Montserrat, Arial, sans-serif';
+        ctx.fillText('ADDU Fitness & Wellness Center', titleX, topY + 72);
+
+        // QR frame (square, centered and fully inside canvas)
+        var qrFrameSize = 920;
+        var qrFrameX = (canvas.width - qrFrameSize) / 2;
+        var qrFrameY = 430;
+
+        // Scan label (same width/center as QR block)
+        ctx.fillStyle = '#003A6C';
+        var scanY = 300;
+        var scanH = 90;
+        ctx.fillRect(qrFrameX, scanY, qrFrameSize, scanH);
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.font = '800 72px Montserrat, Arial, sans-serif';
+        ctx.fillText('SCAN ME', canvas.width / 2, scanY + 67);
+
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(qrFrameX, qrFrameY, qrFrameSize, qrFrameSize);
+        ctx.strokeStyle = '#003A6C';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(qrFrameX, qrFrameY, qrFrameSize, qrFrameSize);
+
+        // QR image (keep edges crisp so scanners read it reliably)
+        var qrImg = await loadImage(qrSrc);
+        ctx.imageSmoothingEnabled = false;
+        var qrPadding = 30;
+        var qrSize = qrFrameSize - (qrPadding * 2);
+        ctx.drawImage(qrImg, qrFrameX + qrPadding, qrFrameY + qrPadding, qrSize, qrSize);
+        ctx.imageSmoothingEnabled = true;
+
+        return canvas.toDataURL('image/png');
+      }
+
+      async function downloadStickerPng() {
+        if (!qrData) return;
+        var src = await buildStickerDataUrl();
+        if (!src) return;
+        var a = document.createElement('a');
+        a.href = src;
+        a.download = qrData.name.toLowerCase().replace(/\s+/g, '-') + '-sticker.png';
+        a.click();
+      }
+
+      async function viewStickerPreview() {
+        if (!qrData) return;
+        var src = await buildStickerDataUrl();
+        if (!src) return;
+        stickerPreviewImg.src = src;
+        stickerPreviewWrap.classList.remove('hidden');
+      }
+
+      function generateQr(item) {
+        var url = absoluteUrl(item.path);
+        if (!url || url === '/') return;
+        qrData = { name: item.name, url: url };
+
+        qrHolder.innerHTML = '';
+        qrInstance = new QRCode(qrHolder, {
+          text: url,
+          // Render at final sticker size to avoid resampling artifacts.
+          width: 760,
+          height: 760,
+          // Use pure black for better scanner contrast.
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          // Use L for less dense QR on long URLs (more scanner-friendly here).
+          correctLevel: QRCode.CorrectLevel.L
+        });
+
+        selectedMachine.textContent = item.name;
+        selectedUrl.textContent = url;
+        stickerPreviewImg.src = '';
+        downloadBtn.disabled = false;
+        viewStickerPreview();
+      }
+
+      function getPageItems() {
+        var start = (currentPage - 1) * pageSize;
+        return filteredMachines.slice(start, start + pageSize);
+      }
+
+      function updatePaginationUi() {
+        var totalPages = Math.max(1, Math.ceil(filteredMachines.length / pageSize));
+        if (currentPage > totalPages) currentPage = totalPages;
+        pageInfo.textContent = 'Page ' + currentPage + ' of ' + totalPages;
+        prevPageBtn.disabled = currentPage <= 1;
+        nextPageBtn.disabled = currentPage >= totalPages;
+      }
+
+      function applySearch(resetPage) {
+        var q = (machineSearch.value || '').trim().toLowerCase();
+        filteredMachines = machines.filter(function (item) {
+          return !q || item.name.toLowerCase().indexOf(q) !== -1 || item.path.toLowerCase().indexOf(q) !== -1;
+        });
+        if (resetPage) currentPage = 1;
+        updatePaginationUi();
+      }
+
+      function renderRows() {
+        rowsEl.innerHTML = '';
+        countBadge.textContent = filteredMachines.length + ' item' + (filteredMachines.length > 1 ? 's' : '');
+
+        var pageItems = getPageItems();
+        if (!pageItems.length) {
+          var emptyRow = document.createElement('tr');
+          emptyRow.innerHTML = '<td colspan="3" class="rounded-md border border-white/20 px-3 py-3 text-center text-xs text-white/70">No machines found.</td>';
+          rowsEl.appendChild(emptyRow);
+          return;
+        }
+
+        pageItems.forEach(function (item) {
+          var tr = document.createElement('tr');
+          tr.className = 'rounded-md bg-white/10';
+
+          tr.innerHTML =
+            '<td class="rounded-l-md border border-white/20 px-2 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-white">' + item.name + '</td>' +
+            '<td class="border-y border-white/20 px-2 py-2 text-xs text-white/80">' + item.path + '</td>' +
+            '<td class="rounded-r-md border border-white/20 px-2 py-2 text-right">' +
+            '<button data-generate="' + item.id + '" class="rounded bg-white px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#003A6C] hover:bg-white/90">Generate</button>' +
+            '</td>';
+
+          rowsEl.appendChild(tr);
+        });
+      }
+
+      rowsEl.addEventListener('click', function (e) {
+        var generateId = e.target.getAttribute('data-generate');
+
+        if (generateId) {
+          var item = machines.find(function (m) { return m.id === generateId; });
+          if (item) generateQr(item);
+          return;
+        }
+      });
+
+      machineSearch.addEventListener('input', function () {
+        applySearch(true);
+        renderRows();
+      });
+
+      prevPageBtn.addEventListener('click', function () {
+        if (currentPage <= 1) return;
+        currentPage -= 1;
+        updatePaginationUi();
+        renderRows();
+      });
+
+      nextPageBtn.addEventListener('click', function () {
+        var totalPages = Math.max(1, Math.ceil(filteredMachines.length / pageSize));
+        if (currentPage >= totalPages) return;
+        currentPage += 1;
+        updatePaginationUi();
+        renderRows();
+      });
+
+      downloadBtn.addEventListener('click', async function () {
+        await downloadStickerPng();
+      });
+
+      async function initialize() {
+        baseUrlText.textContent = readBaseUrl();
+        machines = await fetchEquipmentListMachines();
+        applySearch(true);
+        renderRows();
+      }
+
+      initialize();
+    })();
+  </script>
+</body>
+</html>
+
